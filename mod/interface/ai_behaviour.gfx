@@ -1,0 +1,11 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_ship_part_computer_basic_noai"
+		texturefile = "gfx/interface/ship_parts/ship_part_computer_basic_noai.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_ship_part_computer_advanced_noai"
+		texturefile = "gfx/interface/ship_parts/ship_part_computer_advanced_noai.dds"
+	}
+}

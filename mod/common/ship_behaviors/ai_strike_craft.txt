@@ -1,0 +1,19 @@
+#this file ( and all files in this folder ) is reloadable with console command "reload behavior"
+#filewatcher is enabled for all files in this folder
+
+@engagement_range = 90
+@return_range = 110
+
+ship_behavior = {
+	name = "fighters_pd_behavior"
+	preferred_attack_range = 5
+	formation_distance = @engagement_range
+	return_to_formation_distance = @return_range
+
+	collision_awareness = 0.5
+	collision_strafe = 1.0							#collision_strafe allows the ship to move in any direction while colliding with another
+	collision_radius = 1.0
+
+	attack_move_pattern = none
+	passive_move_pattern = charge
+}

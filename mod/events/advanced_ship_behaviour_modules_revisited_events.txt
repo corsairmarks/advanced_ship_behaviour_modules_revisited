@@ -1,0 +1,14 @@
+namespace = advanced_ship_behaviour_modules_revisited
+
+# flag mod as active
+event = {
+	id = advanced_ship_behaviour_modules_revisited.13
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		NOT = { has_global_flag = advanced_ship_behaviour_modules_revisited_installed }
+	}
+	immediate = {
+		set_global_flag = advanced_ship_behaviour_modules_revisited_installed
+	}
+}
