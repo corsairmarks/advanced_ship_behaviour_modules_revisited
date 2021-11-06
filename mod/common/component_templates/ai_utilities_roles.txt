@@ -106,7 +106,7 @@ utility_component_template = {
 utility_component_template = {
 	key = "CORVETTE_COMBAT_COMPUTER_4_noai"
 	size = small
-	icon = "GFX_ship_part_computer_sapient_noai"
+	icon = "GFX_ship_part_computer_sentient_noai"
 	icon_frame = 1
 	power = @power3
 	resources = {
@@ -139,7 +139,7 @@ utility_component_template = {
 utility_component_template = {
 	key = "CORVETTE_COMBAT_COMPUTER_AUTONOMOUS_noai"
 	size = small
-	icon = "GFX_ship_part_computer_sapient_noai"
+	icon = "GFX_ship_part_computer_sentient_noai"
 	icon_frame = 1
 	power = @power3
 	resources = {
@@ -194,9 +194,9 @@ utility_component_template = {
 	}
 	ship_modifier = {
 		ship_fire_rate_mult = 0.20
-		ship_tracking_add = 20
 		ship_weapon_range_mult = 0.0375
-		ship_accuracy_add = 0.375
+		ship_accuracy_add = 3.75
+		ship_tracking_add = 20
 	}
 
 	ai_weight = {
