@@ -12,13 +12,17 @@ This mod also updates code for all of the ship AI behaviors, special components,
 
 ## Compatibility
 
-This mod resolves compatibility conflicts from the original mod "Advanced Ship Behaviour Modules" by overwriting its out-of-date files.  The original mod replaces almost all of the standard, built-in ship classes.  Therefor, both the original and this updated version will conflict with any other mods that make changes to the contents of  the file `common/ship_sizes/00_ship_sizes.txt` - which defines the majority of player-buildable ship classes.  This mod is technically compatible with mods that add new ship classes, but any new ship classes added by other mods will not have the option for custom-defined AI behavior and instead will use the computer provided by that mod.
+This mod resolves compatibility conflicts from the original mod "Advanced Ship Behaviour Modules" by overwriting its out-of-date files.  The original mod replaces almost all of the standard, built-in ship classes.  Therefor, both the original and this updated version will conflict with any other mods that make changes to the contents of  the file `common/ship_sizes/00_ship_sizes.txt` - which defines the majority of player-buildable ship classes.  This mod is technically compatible with mods that add new ship classes, but any new ship classes added by other mods will not have the option for custom-defined AI behavior and instead will use the computers provided by that mod.
 
 Built for Stellaris version 3.1.* "Lem."  Not compatible with achievements.
 
+### Required Mod Dependencies
+
+[Advanced Ship Behaviour Modules](https://steamcommunity.com/sharedfiles/filedetails/?id=790455347) contains the original graphics and some necessary logic.  There is a high chance Stellaris will crash without this dependency installed.
+
 ### When to Install
 
-This mod can be safely added after the game has started, but should not be removed from a game in-progress.  Losing access to the new ship components or behaviors could cause problems for the game if any are in use.  Always backup your savegame before attempting to remove a mod.
+This mod can be safely added after the game has started, but should not be removed from a game in-progress.  Losing access to the new ship components or behaviors could cause problems for the game.  Always backup your savegame before attempting to remove a mod.
 
 ## Known Issues
 
