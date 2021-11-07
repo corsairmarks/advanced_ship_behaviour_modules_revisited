@@ -14,6 +14,8 @@ This mod also updates code for all of the ship AI behaviors, special components,
 
 This mod resolves compatibility conflicts from the original mod "Advanced Ship Behaviour Modules" by overwriting its out-of-date files.  The original mod replaces almost all of the standard, built-in ship classes.  Therefor, both the original and this updated version will conflict with any other mods that make changes to the contents of  the file `common/ship_sizes/00_ship_sizes.txt` - which defines the majority of player-buildable ship classes.  This mod is technically compatible with mods that add new ship classes, but any new ship classes added by other mods will not have the option for custom-defined AI behavior and instead will use the computers provided by that mod.
 
+Not included in my compilation mod [Subtle Polish: A Collection of Fixes and Enhancements](https://steamcommunity.com/sharedfiles/filedetails/?id=2522974089).  This mod is compatible with the compilation.
+
 Built for Stellaris version 3.1.* "Lem."  Not compatible with achievements.
 
 ### Required Mod Dependencies
@@ -34,7 +36,7 @@ None
 
 ## Source Code
 
-Hosted on [Github](https://github.com/corsairmarks/advanced_ship_behaviour_modules_revisited)
+Hosted on [GitHub](https://github.com/corsairmarks/advanced_ship_behaviour_modules_revisited)
 
 ### Development Notes
 
