@@ -26,7 +26,7 @@ Built for Stellaris version 3.1.* "Lem."  Not compatible with achievements.
 
 This mod can be safely added after the game has started, but should not be removed from a game in-progress.  Losing access to the new ship components or behaviors could cause problems for the game.  Always backup your savegame before attempting to remove a mod.
 
-[h2]Known Issues[/h2]
+[h3]Known Issues[/h3]
 
 None
 
