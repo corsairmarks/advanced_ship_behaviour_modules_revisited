@@ -32,7 +32,7 @@ None
 
 [h2]Change Log[/h2]
 
-See [url=]Change Notes[/url]
+See [url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2649005148]Change Notes[/url]
 
 [h2]Source Code[/h2]
 
