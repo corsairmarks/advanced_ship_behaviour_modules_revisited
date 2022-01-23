@@ -16,7 +16,7 @@ This mod resolves compatibility conflicts from the original mod "Advanced Ship B
 
 Not included in my compilation mod [Subtle Polish: A Collection of Fixes and Enhancements](https://steamcommunity.com/sharedfiles/filedetails/?id=2522974089).  This mod is compatible with the compilation.
 
-Built for Stellaris version 3.2.* "Herbert."  Not compatible with achievements.
+Built for Stellaris version 3.3.* "Libra."  Not compatible with achievements.
 
 ### Required Mod Dependencies
 
@@ -35,6 +35,7 @@ None
 * 1.0.0 Initial version
 * 2.0.0 Update for compatibility with Stellaris version 3.2 "Herbert"
     * Integrate underlying game changes (ship_sizes)
+* 2.1.0 Mark as compatible for Stellaris 3.3 "Libra" - no script changes
 
 ## Source Code
 
