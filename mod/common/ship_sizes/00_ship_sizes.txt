@@ -19,6 +19,13 @@
 			#GFX_<key>_top
 			#GFX_<key>_top_damaged
 # icon_frame: now only used for starbases. Value of 2 or more means it shows up on the galaxy map, 1-5 denote which icon it uses on starbase sprite sheets (e.g. gfx/interface/icons/starbase_ship_sizes.dds)
+# ai_ship_data = {					#For determining how many ships the AI wants. Ships it can't recruit (i.e. missing tech prereqs or fails potential_country or possible_country) are pre-filtered out.
+# 	fraction = { }					#As standard, base, modifier = { factor }, etc. The AI will want this divided by the total fraction it is able to recruit. Note: it is the fraction of the naval cap, so the final value is divided by size_multiplier
+#									#Note: if the fraction is > 0, the following lines will not be applied
+#	min = 1							#Sets a minimum absolute number the country will aim to have
+#	system_mult/planet_mult = 0.1	#Adds this amount for each system/planet the country owns. I.e. min + ( num planets * planet_mult ) + ( num systems * system_mult )
+#	max = 5							#Sets a maximum absolute number the country will aim to have. Note that it will still want only the minimum unless you define a system_mult or planet_mult
+#}
 ####################
 
 ############
@@ -73,6 +80,20 @@ corvette = {
 	min_upgrade_cost = {
 		alloys = 1
 	}
+
+	ai_ship_data = {
+		fraction = {
+			base = 0
+			modifier = {
+				add = 25
+				uses_standard_ship_sizes = yes
+			}
+			modifier = {
+				factor = 1.5
+				is_hive_empire = yes
+			}
+		}
+	}
 }
 
 destroyer = {
@@ -121,6 +142,16 @@ destroyer = {
 	}
 	min_upgrade_cost = {
 		alloys = 2
+	}
+
+	ai_ship_data = {
+		fraction = {
+			base = 0
+			modifier = {
+				add = 25
+				uses_standard_ship_sizes = yes
+			}
+		}
 	}
 }
 
@@ -172,6 +203,20 @@ cruiser = {
 	min_upgrade_cost = {
 		alloys = 4
 	}
+
+	ai_ship_data = {
+		fraction = {
+			base = 0
+			modifier = {
+				add = 25
+				uses_standard_ship_sizes = yes
+			}
+			modifier = {
+				factor = 1.5
+				is_preferred_weapons = weapon_type_strike_craft
+			}
+		}
+	}
 }
 
 battleship = {
@@ -221,6 +266,20 @@ battleship = {
 
 	min_upgrade_cost = {
 		alloys = 8
+	}
+
+	ai_ship_data = {
+		fraction = {
+			base = 0
+			modifier = {
+				add = 25
+				uses_standard_ship_sizes = yes
+			}
+			modifier = {
+				factor = 1.5
+				is_preferred_weapons = weapon_type_strike_craft
+			}
+		}
 	}
 }
 
@@ -309,16 +368,6 @@ titan = {
 			}
 		}
 	}
-	
-	empire_limit = {
-		base = 1
-		max = 20
-		naval_cap_div = 200
-		show = {
-			is_scope_valid = yes
-			has_technology = tech_titans
-		}
-	}
 
 	resources = {
 		category = ships
@@ -330,6 +379,12 @@ titan = {
 
 	min_upgrade_cost = {
 		alloys = 16
+	}
+
+	ai_ship_data = {
+		min = 1
+		max = 3
+		planet_mult = 0.1
 	}
 }
 
@@ -376,6 +431,12 @@ constructor = {
 			energy = @construction_upkeep_energy
 			alloys = @construction_upkeep_alloys
 		}
+	}
+
+	ai_ship_data = {
+		min = value:desired_constructors_min
+		system_mult = 0.15
+		max = value:desired_constructors_max
 	}
 }
 
@@ -497,6 +558,10 @@ colonizer = {
 			alloys = @colony_upkeep_alloys
 		}
 	}
+
+	ai_ship_data = {
+		min = value:desired_colonizers
+	}
 }
 
 sponsored_colonizer = {
@@ -530,6 +595,7 @@ sponsored_colonizer = {
 	required_component_set = "sensor_components"
 	valid_target_aggressive_stance = no
 	auto_upgrade = yes
+	use_shipnames_from = colonizer
 
 	resources = {
 		category = ships
@@ -548,6 +614,10 @@ sponsored_colonizer = {
 			has_civic = civic_corporate_dominion
 			has_civic = civic_private_prospectors
 		}
+	}
+
+	ai_ship_data = {
+		min = value:desired_colonizers_base
 	}
 }
 
@@ -584,6 +654,7 @@ lithoid_colonizer = {
 	required_component_set = "sensor_components"
 	valid_target_aggressive_stance = no
 	auto_upgrade = yes
+	use_shipnames_from = colonizer
 
 	resources = {
 		category = ships
@@ -598,6 +669,10 @@ lithoid_colonizer = {
 
 	potential_country = {
 		has_origin = origin_lithoid
+	}
+
+	ai_ship_data = {
+		min = value:desired_colonizers_base
 	}
 }
 
@@ -647,11 +722,22 @@ science = {
 			alloys = @science_upkeep_alloys
 		}
 	}
+
+	potential_country = {
+		NOT = {
+			is_country_type = enclave_mercenary
+		}
+	}
+
+	ai_ship_data = {
+		min = value:desired_science_ships
+		system_mult = value:desired_science_ships_system_mult
+		max = 5
+	}
 }
 
 transport = {
 	max_speed = @speed_very_fast
-	acceleration = 0.3
 	rotation_speed = 0.2
 	acceleration = 0.6
 	max_hitpoints = @transport_hp
@@ -687,14 +773,14 @@ military_station_small = {
 	max_speed = 6
 	rotation_speed = 10
 	acceleration = 10
-	max_hitpoints = 1000
+	max_hitpoints = 2000
 	modifier = {
 		ship_evasion_mult = -1
 		ships_upkeep_mult = -0.25
 		ship_piracy_suppression_add = 2
 	}
 	ship_modifier = {
-		ship_weapon_range_mult = 0.20
+		ship_weapon_range_mult = 0.30
 	}
 	combat_size_multiplier = 2
 	size_multiplier = 1
@@ -708,7 +794,7 @@ military_station_small = {
 	takes_name_from_ship_design = yes
 	num_target_locators = 0
 	is_space_station = yes
-	base_buildtime = 120
+	base_buildtime = @corvette_build_time
 	
 	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
 	prerequisites = { "tech_space_defense_station_1" }
@@ -723,8 +809,11 @@ military_station_small = {
 
 	potential_construction = {
 		is_scope_type = starbase
-		has_starbase_size >= starbase_outpost
-}
+		OR = {
+			has_starbase_size >= starbase_outpost
+			has_starbase_size >= orbital_ring_tier_1
+		}
+	}
 
 	resources = {
 		category = ships
@@ -742,9 +831,9 @@ military_station_medium = {
 		ships_upkeep_mult = -0.25
 	}
 	ship_modifier = {
-		ship_weapon_range_mult = 0.20
+		ship_weapon_range_mult = 0.30
 	}
-	max_hitpoints = 10000
+	max_hitpoints = 20000
 	size_multiplier = 8
 	fleet_slot_size = 4
 	section_slots = { 
@@ -755,7 +844,7 @@ military_station_medium = {
 	}
 	num_target_locators = 0
 	is_space_station = yes	
-	base_buildtime = 360
+	base_buildtime = @destroyer_build_time
 	is_listed = no
 	is_designable = no
 	uses_name_prefix = no
@@ -771,7 +860,7 @@ military_station_medium = {
 
 	resources = {
 		category = ships
-}
+	}
 }
 
 military_station_large = {
@@ -785,9 +874,9 @@ military_station_large = {
 		ships_upkeep_mult = -0.25
 	}
 	ship_modifier = {
-		ship_weapon_range_mult = 0.20
+		ship_weapon_range_mult = 0.30
 	}
-	max_hitpoints = 15000
+	max_hitpoints = 30000
 	size_multiplier = 16
 	fleet_slot_size = 8
 	section_slots = { 
@@ -798,6 +887,7 @@ military_station_large = {
 	}
 	num_target_locators = 0
 	is_space_station = yes
+	base_buildtime = @cruiser_build_time
 	is_listed = no
 	is_designable = no
 	uses_name_prefix = no
@@ -813,7 +903,7 @@ military_station_large = {
 
 	resources = {
 		category = ships
-}
+	}
 }
 
 ################
