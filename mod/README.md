@@ -38,10 +38,11 @@ None
 * 2.0.0 Update for compatibility with Stellaris version 3.2 "Herbert"
     * Integrate underlying game changes (ship_sizes)
 * 2.1.0 Mark as compatible for Stellaris 3.3 "Libra" - no script changes
-* 3.0.0 Update for Stellaris version 3.4 "Cepheus"
+* 3.0.0 Update for Stellaris version 3.4.2 "Cepheus"
     * Add new `ai_ship_data` section to all appropriate ship designs
     * Update defense platform stats to match underlying changes
     * Add full-file overwrite of `common/ship_sizes/21_overlord.txt` in order to add AI Behavior to Progenitor Hive Offspring ships
+* 3.1.0 Update for Stellaris version 3.4.3 "Cepheus" - apply sponsored and lithoid colonizer AI budgeting fix
 
 ## Source Code
 
