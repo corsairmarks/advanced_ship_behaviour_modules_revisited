@@ -598,7 +598,7 @@ sponsored_colonizer = {
 	use_shipnames_from = colonizer
 
 	resources = {
-		category = ships
+		category = colonies
 		cost = {
 			energy = 500
 		}
@@ -657,7 +657,7 @@ lithoid_colonizer = {
 	use_shipnames_from = colonizer
 
 	resources = {
-		category = ships
+		category = colonies
 		cost = {
 			minerals = 500
 		}
