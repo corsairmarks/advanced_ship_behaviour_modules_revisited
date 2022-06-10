@@ -24,7 +24,13 @@ Built for Stellaris version 3.4 "Cepheus."  Not compatible with achievements.
 This mod can be safely added after the game has started, but should not be removed from a game in-progress.  Losing access to the new ship components or behaviors could cause problems for the game.  Always backup your savegame before attempting to remove a mod.
 
 [h3]Known Issues[/h3]
-None
+Overriding a ship size causes the game to log errors. Expect to see four lines in the error.log file similar to these:
+[code]
+[14:50:31][game_singleobjectdatabase.h:148]: Object with key: offspring_corvette already exists, using the one at  file: common/ship_sizes/31_advanced_ship_behaviour_modules_revisited_overlord_ship_size_overrides.txt line: 5
+[14:50:31][game_singleobjectdatabase.h:148]: Object with key: offspring_destroyer already exists, using the one at  file: common/ship_sizes/31_advanced_ship_behaviour_modules_revisited_overlord_ship_size_overrides.txt line: 77
+[14:50:31][game_singleobjectdatabase.h:148]: Object with key: offspring_cruiser already exists, using the one at  file: common/ship_sizes/31_advanced_ship_behaviour_modules_revisited_overlord_ship_size_overrides.txt line: 138
+[14:50:31][game_singleobjectdatabase.h:148]: Object with key: offspring_battleship already exists, using the one at  file: common/ship_sizes/31_advanced_ship_behaviour_modules_revisited_overlord_ship_size_overrides.txt line: 200
+[/code]
 
 [h2]Change Log[/h2]
 See [url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2649005148]Change Notes[/url]

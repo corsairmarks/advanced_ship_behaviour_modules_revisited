@@ -30,7 +30,14 @@ This mod can be safely added after the game has started, but should not be remov
 
 ### Known Issues
 
-None
+Overriding a ship size causes the game to log errors. Expect to see four lines in the error.log file similar to these:
+
+```
+[14:50:31][game_singleobjectdatabase.h:148]: Object with key: offspring_corvette already exists, using the one at  file: common/ship_sizes/31_advanced_ship_behaviour_modules_revisited_overlord_ship_size_overrides.txt line: 5
+[14:50:31][game_singleobjectdatabase.h:148]: Object with key: offspring_destroyer already exists, using the one at  file: common/ship_sizes/31_advanced_ship_behaviour_modules_revisited_overlord_ship_size_overrides.txt line: 77
+[14:50:31][game_singleobjectdatabase.h:148]: Object with key: offspring_cruiser already exists, using the one at  file: common/ship_sizes/31_advanced_ship_behaviour_modules_revisited_overlord_ship_size_overrides.txt line: 138
+[14:50:31][game_singleobjectdatabase.h:148]: Object with key: offspring_battleship already exists, using the one at  file: common/ship_sizes/31_advanced_ship_behaviour_modules_revisited_overlord_ship_size_overrides.txt line: 200
+```
 
 ## Change Log
 
@@ -43,6 +50,7 @@ None
     * Update defense platform stats to match underlying changes
     * Add full-file overwrite of `common/ship_sizes/21_overlord.txt` in order to add AI Behavior to Progenitor Hive Offspring ships
 * 3.1.0 Update for Stellaris version 3.4.3 "Cepheus" - apply sponsored and lithoid colonizer AI budgeting fix
+* 3.2.0 Convert full-file overwrite of `common/ship_sizes/21_overlord.txt` to overrides of only the four Offspring ship sizes
 
 ## Source Code
 
