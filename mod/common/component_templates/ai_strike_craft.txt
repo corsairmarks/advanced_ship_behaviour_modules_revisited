@@ -9,6 +9,11 @@
 @count = 8
 @regen = 0.5
 
+@power1 = -20
+@power2 = -34
+@power3 = -45
+@power4 = -59
+
 strike_craft_component_template = {
 	key = "LARGE_FIGHTERS_HANGAR_PD_1"
 	size = LARGE
@@ -39,7 +44,7 @@ strike_craft_component_template = {
 	accuracy = 1.00
 	tracking = 0.80
 
-	health = 10
+	health = 14
 	armor = 0
 	shield = 15
 	evasion = 0.60
@@ -94,9 +99,9 @@ strike_craft_component_template = {
 	accuracy = 1.00
 	tracking = 0.90
 
-	health = 15
+	health = 20
 	armor = 0
-	shield = 25
+	shield = 20
 	evasion = 0.70
 
 	speed = @speed3
@@ -126,7 +131,7 @@ strike_craft_component_template = {
 	entity = "fighter_entity"
 
 	weapon_type = point_defence
-	projectile_gfx = "auto_cannons_s"
+	projectile_gfx = "strike_craft_laser_3"
 	power = @power4
 	resources = {
 		category = ship_components
@@ -150,9 +155,9 @@ strike_craft_component_template = {
 	accuracy = 1.00
 	tracking = 1.00
 
-	health = 20
+	health = 24
 	armor = 0
-	shield = 35
+	shield = 25
 	evasion = 0.80
 
 	speed = @speed4
