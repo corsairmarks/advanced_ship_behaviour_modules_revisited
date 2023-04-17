@@ -16,11 +16,15 @@ ship_behavior = {
 
 ship_behavior = {
 	name = "ai_behaviour_charge"
-	preferred_attack_range = 10
-	formation_distance = 20
+	preferred_attack_range = min
+	formation_distance = 10
 	return_to_formation_distance = 60
+	source_target_anchor_factor = 1.0
+	combat_target_anchor = root
 
 	collision_awareness = 0.5
+	collision_strafe = 1.0
+	collision_radius = 2.0
 
 	attack_move_pattern = charge
 	passive_move_pattern = charge
@@ -33,8 +37,12 @@ ship_behavior = {
 	preferred_attack_range = 40
 	formation_distance = 45
 	return_to_formation_distance = 60
+	source_target_anchor_factor = 1.0
+	combat_target_anchor = root
 
-	collision_awareness = 0.35
+	collision_awareness = 0.2
+	collision_radius = 2.0
+	collision_strafe = 2.5
 
 	attack_move_pattern = stay_at_range
 	passive_move_pattern = charge
@@ -47,11 +55,15 @@ ship_behavior = {
 	preferred_attack_range = 50
 	formation_distance = 55
 	return_to_formation_distance = 70
+	source_target_anchor_factor = 1.0
+	combat_target_anchor = root
 
-	collision_awareness = 0.35
+	collision_awareness = 0.2
+	collision_radius = 2.0
+	collision_strafe = 2.5
 
-	attack_move_pattern = stay_at_range
-	passive_move_pattern = charge
+	attack_move_pattern = maintain_distance
+	passive_move_pattern = stay_at_range
 
 	desc = "ai_behaviour_stationary_50_DESC"
 }
@@ -61,10 +73,15 @@ ship_behavior = {
 	preferred_attack_range = 60
 	formation_distance = 65
 	return_to_formation_distance = 80
+	source_target_anchor_factor = 1.0
+	combat_target_anchor = root
 
-	collision_awareness = 0.35
-	attack_move_pattern = stay_at_range
-	passive_move_pattern = charge
+	collision_awareness = 0.2
+	collision_radius = 2.0
+	collision_strafe = 2.5
+
+	attack_move_pattern = maintain_distance
+	passive_move_pattern = stay_at_range
 
 	desc = "ai_behaviour_stationary_60_DESC"
 }
@@ -74,11 +91,15 @@ ship_behavior = {
 	preferred_attack_range = 70
 	formation_distance = 75
 	return_to_formation_distance = 95
+	source_target_anchor_factor = 1.0
+	combat_target_anchor = root
 
-	collision_awareness = 0.35
+	collision_awareness = 0.2
+	collision_radius = 2.0
+	collision_strafe = 2.5
 
-	attack_move_pattern = stay_at_range
-	passive_move_pattern = charge
+	attack_move_pattern = maintain_distance
+	passive_move_pattern = stay_at_range
 
 	desc = "ai_behaviour_stationary_70_DESC"
 }
@@ -88,11 +109,15 @@ ship_behavior = {
 	preferred_attack_range = 80
 	formation_distance = 85
 	return_to_formation_distance = 100
+	source_target_anchor_factor = 1.0
+	combat_target_anchor = root
 
-	collision_awareness = 0.35
+	collision_awareness = 0.2
+	collision_radius = 2.0
+	collision_strafe = 2.5
 
-	attack_move_pattern = stay_at_range
-	passive_move_pattern = charge
+	attack_move_pattern = maintain_distance
+	passive_move_pattern = stay_at_range
 
 	desc = "ai_behaviour_stationary_80_DESC"
 }
@@ -102,11 +127,15 @@ ship_behavior = {
 	preferred_attack_range = 90
 	formation_distance = 100
 	return_to_formation_distance = 110
+	source_target_anchor_factor = 1.0
+	combat_target_anchor = root
 
-	collision_awareness = 0.35
+	collision_awareness = 0.2
+	collision_radius = 2.0
+	collision_strafe = 2.5
 
-	attack_move_pattern = stay_at_range
-	passive_move_pattern = charge
+	attack_move_pattern = maintain_distance
+	passive_move_pattern = stay_at_range
 
 	desc = "ai_behaviour_stationary_90_DESC"
 }
@@ -116,11 +145,15 @@ ship_behavior = {
 	preferred_attack_range = 100
 	formation_distance = 110
 	return_to_formation_distance = 120
+	source_target_anchor_factor = 1.0
+	combat_target_anchor = root
 
-	collision_awareness = 0.35
+	collision_awareness = 0.2
+	collision_radius = 2.0
+	collision_strafe = 2.5
 
-	attack_move_pattern = stay_at_range
-	passive_move_pattern = charge
+	attack_move_pattern = maintain_distance
+	passive_move_pattern = stay_at_range
 
 	desc = "ai_behaviour_stationary_100_DESC"
 }
@@ -130,11 +163,15 @@ ship_behavior = {
 	preferred_attack_range = 110
 	formation_distance = 120
 	return_to_formation_distance = 130
+	source_target_anchor_factor = 1.0
+	combat_target_anchor = root
 
-	collision_awareness = 0.35
+	collision_awareness = 0.2
+	collision_radius = 2.0
+	collision_strafe = 2.5
 
-	attack_move_pattern = stay_at_range
-	passive_move_pattern = charge
+	attack_move_pattern = maintain_distance
+	passive_move_pattern = stay_at_range
 
 	desc = "ai_behaviour_stationary_110_DESC"
 }
@@ -144,11 +181,15 @@ ship_behavior = {
 	preferred_attack_range = 120
 	formation_distance = 125
 	return_to_formation_distance = 150
+	source_target_anchor_factor = 1.0
+	combat_target_anchor = root
 
-	collision_awareness = 0.35
+	collision_awareness = 0.2
+	collision_radius = 2.0
+	collision_strafe = 2.5
 
-	attack_move_pattern = stay_at_range
-	passive_move_pattern = charge
+	attack_move_pattern = maintain_distance
+	passive_move_pattern = stay_at_range
 
 	desc = "ai_behaviour_stationary_120_DESC"
 }
@@ -158,8 +199,12 @@ ship_behavior = {
 	preferred_attack_range = 40
 	formation_distance = 40
 	return_to_formation_distance = 10
+	source_target_anchor_factor = 1.0
+	combat_target_anchor = root
 
 	collision_awareness = 0.75
+	collision_strafe = 2.0
+	collision_radius = 2.5
 
 	attack_move_pattern = orbit
 	passive_move_pattern = orbit
@@ -172,8 +217,12 @@ ship_behavior = {
 	preferred_attack_range = 60
 	formation_distance = 60
 	return_to_formation_distance = 10
+	source_target_anchor_factor = 1.0
+	combat_target_anchor = root
 
 	collision_awareness = 0.75
+	collision_strafe = 2.0
+	collision_radius = 2.5
 
 	attack_move_pattern = orbit
 	passive_move_pattern = orbit
@@ -186,8 +235,12 @@ ship_behavior = {
 	preferred_attack_range = 80
 	formation_distance = 80
 	return_to_formation_distance = 10
+	source_target_anchor_factor = 1.0
+	combat_target_anchor = root
 
 	collision_awareness = 0.75
+	collision_strafe = 2.0
+	collision_radius = 2.5
 
 	attack_move_pattern = orbit
 	passive_move_pattern = orbit
@@ -200,8 +253,12 @@ ship_behavior = {
 	preferred_attack_range = 100
 	formation_distance = 100
 	return_to_formation_distance = 10
+	source_target_anchor_factor = 1.0
+	combat_target_anchor = root
 
 	collision_awareness = 0.75
+	collision_strafe = 2.0
+	collision_radius = 2.5
 
 	attack_move_pattern = orbit
 	passive_move_pattern = orbit
@@ -214,8 +271,12 @@ ship_behavior = {
 	preferred_attack_range = 40
 	formation_distance = 30
 	return_to_formation_distance = 50
+	source_target_anchor_factor = 1.0
+	combat_target_anchor = root
 
 	collision_awareness = 0.5
+	collision_strafe = 1.0
+	collision_radius = 2.0
 
 	attack_move_pattern = flee
 	passive_move_pattern = charge
@@ -228,8 +289,12 @@ ship_behavior = {
 	preferred_attack_range = 60
 	formation_distance = 50
 	return_to_formation_distance = 70
+	source_target_anchor_factor = 1.0
+	combat_target_anchor = root
 
 	collision_awareness = 0.5
+	collision_strafe = 1.0
+	collision_radius = 2.0
 
 	attack_move_pattern = flee
 	passive_move_pattern = charge
@@ -242,8 +307,12 @@ ship_behavior = {
 	preferred_attack_range = 80
 	formation_distance = 70
 	return_to_formation_distance = 80
+	source_target_anchor_factor = 1.0
+	combat_target_anchor = root
 
 	collision_awareness = 0.5
+	collision_strafe = 1.0
+	collision_radius = 2.0
 
 	attack_move_pattern = flee
 	passive_move_pattern = charge
@@ -256,8 +325,12 @@ ship_behavior = {
 	preferred_attack_range = 100
 	formation_distance = 95
 	return_to_formation_distance = 110
+	source_target_anchor_factor = 1.0
+	combat_target_anchor = root
 
 	collision_awareness = 0.5
+	collision_strafe = 1.0
+	collision_radius = 2.0
 
 	attack_move_pattern = flee
 	passive_move_pattern = charge
