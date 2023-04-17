@@ -55,8 +55,8 @@ strike_craft_component_template = {
 
 	armor_damage = 1.5
 	armor_penetration = 0.25
-	shield_damage = 1.5
-	shield_penetration = 0.25
+	shield_damage = 1.75
+	shield_penetration = 0.5
 
 	ship_behavior = "fighters_pd_behavior"
 
@@ -110,8 +110,8 @@ strike_craft_component_template = {
 
 	armor_damage = 1.5
 	armor_penetration = 0.25
-	shield_damage = 1.5
-	shield_penetration = 0.25
+	shield_damage = 1.75
+	shield_penetration = 0.5
 
 	ship_behavior = "fighters_pd_behavior"
 
@@ -166,8 +166,8 @@ strike_craft_component_template = {
 
 	armor_damage = 1.5
 	armor_penetration = 0.25
-	shield_damage = 1.5
-	shield_penetration = 0.25
+	shield_damage = 1.75
+	shield_penetration = 0.5
 
 	ship_behavior = "fighters_pd_behavior"
 
