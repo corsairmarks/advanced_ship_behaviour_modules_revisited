@@ -26,6 +26,9 @@
 #	system_mult/planet_mult = 0.1	#Adds this amount for each system/planet the country owns. I.e. min + ( num planets * planet_mult ) + ( num systems * system_mult )
 #	max = 5							#Sets a maximum absolute number the country will aim to have. Note that it will still want only the minimum unless you define a system_mult or planet_mult
 #}
+# ship_roles = { name1 name2 } # Show up as selectable roles in the ship designer
+# triggered_ship_roles = { { name = test1 trigger = {} } { name = test1 trigger = {} } } # List of triggered ship roles, show up in the ship designer when the trigger is true, executes on country scope
+
 ####################
 
 ############
@@ -51,15 +54,21 @@ corvette = {
 	icon = ship_size_military_1
 	base_buildtime = @corvette_build_time
 	can_have_federation_design = yes
-	enable_default_design = yes	#if yes, countries will have an auto-generated design at start	
+	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
 	enable_3dview_in_ship_browser = yes #if yes, ship design will have a 3d view in the ship browser
 
 	default_behavior = swarm
-	
+	ship_roles = { screen gunship artillery brawler }
+	triggered_ship_roles = {
+		{
+			name = brawler_stealth
+			trigger = { has_technology = tech_cloaking_1 }
+		}
+	}
 	prerequisites = { "tech_corvettes" }
-	
+
 	combat_disengage_chance = 1.00
-	
+
 	class = shipclass_military
 	construction_type = starbase_shipyard
 	required_component_set = "power_core"
@@ -67,7 +76,7 @@ corvette = {
 	required_component_set = "thruster_components"
 	required_component_set = "sensor_components"
 	required_component_set = "combat_computers"
-	required_component_set = "ai_behaviour"  #adds ai module for behaviour
+	required_component_set = "ai_behaviour" #adds ai module for behaviour
 
 	resources = {
 		category = ships
@@ -85,12 +94,110 @@ corvette = {
 		fraction = {
 			base = 0
 			modifier = {
-				add = 25
+				add = 15
 				uses_standard_ship_sizes = yes
 			}
 			modifier = {
 				factor = 1.5
 				is_hive_empire = yes
+			}
+			modifier = {
+				factor = 1.25
+				NOT = { is_preferred_weapons = weapon_type_explosive }
+			}
+			modifier = {
+				factor = 0.75
+				is_preferred_weapons = weapon_type_strike_craft
+				has_technology = tech_destroyers
+			}
+			modifier = {
+				factor = 1.5
+				has_valid_ai_personality = yes
+				OR = {
+					has_ai_personality = ruthless_capitalists #doing it cheap, or something
+					has_ai_personality = hegemonic_imperialists
+				}
+			}
+		}
+	}
+}
+
+frigate = {
+	formation_priority = @frigate_formation_priority
+	entity = corvette_entity
+	max_speed = @speed_default
+	acceleration = 0.25
+	rotation_speed = 0.1
+	collision_radius = @frigate_collision_radius
+	max_hitpoints = @frigate_hp
+	modifier = {
+		ship_evasion_add = @frigate_evasion
+		ship_piracy_suppression_add = 10
+	}
+	size_multiplier = 1
+	hull_scale = 1.25
+	fleet_slot_size = 1
+	section_slots = { "mid" = { locator = "part1" } }
+	num_target_locators = 2
+	is_space_station = no
+	icon = ship_size_military_1_torpedo
+	base_buildtime = @frigate_build_time
+	can_have_federation_design = yes
+	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
+	enable_3dview_in_ship_browser = yes #if yes, ship design will have a 3d view in the ship browser
+	use_shipnames_from = corvette
+
+	default_behavior = torpedo
+	ship_roles = { explosive }
+	triggered_ship_roles = {
+		{
+			name = explosive_stealth
+			trigger = { has_technology = tech_cloaking_1 }
+		}
+		{
+			name = energy_torpedoes
+			trigger = { has_technology = tech_energy_torpedoes_1 }
+		}
+	}
+	prerequisites = { "tech_torpedoes_1" }
+
+	combat_disengage_chance = 1.00
+
+	class = shipclass_military
+	construction_type = starbase_shipyard
+	required_component_set = "power_core"
+	required_component_set = "ftl_components"
+	required_component_set = "thruster_components"
+	required_component_set = "sensor_components"
+	required_component_set = "combat_computers"
+	required_component_set = "ai_behaviour" #adds ai module for behaviour
+
+	resources = {
+		category = ships
+		upkeep = {
+			energy = @corvette_upkeep_energy
+			alloys = @corvette_upkeep_alloys
+		}
+	}
+
+	min_upgrade_cost = {
+		alloys = 1
+	}
+
+	ai_ship_data = {
+		fraction = {
+			base = 0
+			modifier = {
+				add = 10
+				uses_standard_ship_sizes = yes
+			}
+			modifier = {
+				factor = 1.25
+				is_preferred_weapons = weapon_type_explosive
+			}
+			modifier = {
+				factor = 1.5
+				has_technology = tech_battleships
 			}
 		}
 	}
@@ -117,13 +224,19 @@ destroyer = {
 	can_have_federation_design = yes
 	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
 	enable_3dview_in_ship_browser = yes #if yes, ship design will have a 3d view in the ship browser
-	
-	default_behavior = picket
 
+	default_behavior = picket
+	ship_roles = { screen gunship artillery brawler }
+	triggered_ship_roles = {
+		{
+			name = artillery_stealth
+			trigger = { has_technology = tech_cloaking_2 }
+		}
+	}
 	prerequisites = { "tech_destroyers" }
-	
+
 	combat_disengage_chance = 1.50
-	
+
 	class = shipclass_military
 	construction_type = starbase_shipyard
 	required_component_set = "power_core"
@@ -131,7 +244,7 @@ destroyer = {
 	required_component_set = "thruster_components"
 	required_component_set = "sensor_components"
 	required_component_set = "combat_computers"
-	required_component_set = "ai_behaviour"  #adds ai module for behaviour
+	required_component_set = "ai_behaviour" #adds ai module for behaviour
 
 	resources = {
 		category = ships
@@ -148,8 +261,26 @@ destroyer = {
 		fraction = {
 			base = 0
 			modifier = {
-				add = 25
+				add = 15
 				uses_standard_ship_sizes = yes
+			}
+			modifier = {
+				factor = 1.5
+				has_valid_ai_personality = yes
+				OR = {
+					has_ai_personality = erudite_explorers
+					has_ai_personality = federation_builders
+					has_ai_personality = peaceful_traders
+				}
+			}
+			modifier = {
+				factor = 1.5
+				has_valid_civic = civic_hive_devouring_swarm
+			}
+			modifier = {
+				factor = 1.5
+				has_valid_civic = civic_hive_devouring_swarm
+				NOT = { has_technology = tech_battleships }
 			}
 		}
 	}
@@ -178,11 +309,38 @@ cruiser = {
 	enable_3dview_in_ship_browser = yes #if yes, ship design will have a 3d view in the ship browser
 
 	default_behavior = line
-	
+	ship_roles = { gunship artillery carrier }
+	triggered_ship_roles = {
+		{
+			name = explosive
+			trigger = { has_technology = tech_torpedoes_1 }
+		}
+		{
+			name = explosive_stealth
+			trigger = { has_technology = tech_cloaking_3 }
+		}
+		{
+			name = energy_torpedoes
+			trigger = { has_technology = tech_energy_torpedoes_1 }
+		}
+		{
+			name = energy_torpedoes_stealth
+			trigger = {
+				has_technology = tech_cloaking_3
+				has_technology = tech_energy_torpedoes_1
+			}
+		}
+		{
+			name = artillery_stealth
+			trigger = {
+				has_technology = tech_cloaking_3
+			}
+		}
+	}
 	prerequisites = { "tech_cruisers" }
-	
+
 	combat_disengage_chance = 1.50
-	
+
 	class = shipclass_military
 	construction_type = starbase_shipyard
 	required_component_set = "power_core"
@@ -190,7 +348,7 @@ cruiser = {
 	required_component_set = "thruster_components"
 	required_component_set = "sensor_components"
 	required_component_set = "combat_computers"
-	required_component_set = "ai_behaviour"  #adds ai module for behaviour
+	required_component_set = "ai_behaviour" #adds ai module for behaviour
 
 	resources = {
 		category = ships
@@ -214,6 +372,15 @@ cruiser = {
 			modifier = {
 				factor = 1.5
 				is_preferred_weapons = weapon_type_strike_craft
+			}
+			modifier = {
+				factor = 1.5
+				has_valid_ai_personality = yes
+				OR = {
+					has_ai_personality = evangelising_zealots
+					has_ai_personality = spiritual_seekers
+					has_ai_personality = slaving_despots
+				}
 			}
 		}
 	}
@@ -240,13 +407,13 @@ battleship = {
 	can_have_federation_design = yes
 	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
 	enable_3dview_in_ship_browser = yes #if yes, ship design will have a 3d view in the ship browser
-	
-	default_behavior = line
 
+	default_behavior = artillery
+	ship_roles = { artillery carrier gunship }
 	prerequisites = { "tech_battleships" }
-	
+
 	combat_disengage_chance = 1.25
-	
+
 	class = shipclass_military
 	construction_type = starbase_shipyard
 	required_component_set = "power_core"
@@ -254,7 +421,7 @@ battleship = {
 	required_component_set = "thruster_components"
 	required_component_set = "sensor_components"
 	required_component_set = "combat_computers"
-	required_component_set = "ai_behaviour"  #adds ai module for behaviour
+	required_component_set = "ai_behaviour" #adds ai module for behaviour
 
 	resources = {
 		category = ships
@@ -272,12 +439,30 @@ battleship = {
 		fraction = {
 			base = 0
 			modifier = {
-				add = 25
+				add = 50
 				uses_standard_ship_sizes = yes
 			}
 			modifier = {
 				factor = 1.5
 				is_preferred_weapons = weapon_type_strike_craft
+			}
+			modifier = {
+				factor = 1.5
+				has_valid_civic = civic_hive_devouring_swarm
+			}
+			modifier = {
+				factor = 1.5
+				is_machine_empire = yes
+			}
+			modifier = {
+				factor = 1.5
+				has_valid_ai_personality = yes
+				OR = {
+					has_ai_personality = honorbound_warriors
+					has_ai_personality = hegemonic_imperialists
+					has_ai_personality = democratic_crusaders
+					has_ai_personality = became_the_crisis
+				}
 			}
 		}
 	}
@@ -304,13 +489,13 @@ titan = {
 	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
 	enable_3dview_in_ship_browser = yes #if yes, ship design will have a 3d view in the ship browser
 	selectable = { host_has_dlc = "Apocalypse" }
-	
-	default_behavior = artillery
 
+	default_behavior = artillery
+	ship_roles = { artillery gunship }
 	prerequisites = { "tech_titans" }
-	
+
 	combat_disengage_chance = 1.25
-	
+
 	class = shipclass_military
 	construction_type = starbase_shipyard
 	required_component_set = "power_core"
@@ -318,7 +503,7 @@ titan = {
 	required_component_set = "thruster_components"
 	required_component_set = "sensor_components"
 	required_component_set = "combat_computers"
-	required_component_set = "ai_behaviour"  #adds ai module for behaviour
+	required_component_set = "ai_behaviour" #adds ai module for behaviour
 	required_component_set = "ship_aura_components"
 
 	potential_construction = {
@@ -333,7 +518,7 @@ titan = {
 			}
 		}
 	}
-	
+
 	possible_construction = {
 		custom_tooltip = {
 			fail_text = starbase_citadel_trigger
@@ -403,7 +588,7 @@ constructor = {
 	is_space_station = no
 	icon = ship_size_constructor
 	base_buildtime = @construction_build_time
-	
+
 	combat_disengage_chance = 1.0
 
 	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
@@ -430,6 +615,16 @@ constructor = {
 		upkeep = {
 			energy = @construction_upkeep_energy
 			alloys = @construction_upkeep_alloys
+		}
+	}
+
+	potential_country = {
+		OR = {
+			has_technology = tech_hyper_drive_1
+			has_technology = tech_hyper_drive_2
+			has_technology = tech_hyper_drive_3
+			has_technology = tech_jump_drive_1
+			has_technology = tech_psi_jump_drive_1
 		}
 	}
 
@@ -559,6 +754,16 @@ colonizer = {
 		}
 	}
 
+	potential_country = {
+		OR = {
+			has_technology = tech_hyper_drive_1
+			has_technology = tech_hyper_drive_2
+			has_technology = tech_hyper_drive_3
+			has_technology = tech_jump_drive_1
+			has_technology = tech_psi_jump_drive_1
+		}
+	}
+
 	ai_ship_data = {
 		min = value:desired_colonizers
 	}
@@ -579,7 +784,7 @@ sponsored_colonizer = {
 	is_space_station = no
 	icon = ship_size_colonizer
 	base_buildtime = @colony_build_time
-	
+
 	combat_disengage_chance = 0.5
 
 	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
@@ -613,6 +818,13 @@ sponsored_colonizer = {
 		OR = {
 			has_civic = civic_corporate_dominion
 			has_civic = civic_private_prospectors
+		}
+		OR = {
+			has_technology = tech_hyper_drive_1
+			has_technology = tech_hyper_drive_2
+			has_technology = tech_hyper_drive_3
+			has_technology = tech_jump_drive_1
+			has_technology = tech_psi_jump_drive_1
 		}
 	}
 
@@ -669,6 +881,13 @@ lithoid_colonizer = {
 
 	potential_country = {
 		has_origin = origin_lithoid
+		OR = {
+			has_technology = tech_hyper_drive_1
+			has_technology = tech_hyper_drive_2
+			has_technology = tech_hyper_drive_3
+			has_technology = tech_jump_drive_1
+			has_technology = tech_psi_jump_drive_1
+		}
 	}
 
 	ai_ship_data = {
@@ -694,13 +913,13 @@ science = {
 	is_space_station = no
 	icon = ship_size_science
 	base_buildtime = @science_build_time
-	
+
 	combat_disengage_chance = 2.0
-	
+
 	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
 	enable_3dview_in_ship_browser = yes #if yes, ship design will have a 3d view in the ship browser
 	is_designable = no
-	components_add_to_cost = no	
+	components_add_to_cost = no
 	prerequisites = { "tech_space_exploration" }
 	is_civilian = yes
 	class = shipclass_science_ship
@@ -709,6 +928,7 @@ science = {
 	required_component_set = "ftl_components"
 	required_component_set = "thruster_components"
 	required_component_set = "sensor_components"
+	required_component_set = "science_cloaking_components"
 	valid_target_aggressive_stance = no
 	auto_upgrade = yes
 
@@ -724,8 +944,13 @@ science = {
 	}
 
 	potential_country = {
-		NOT = {
-			is_country_type = enclave_mercenary
+		NOT = { is_country_type = enclave_mercenary }
+		OR = {
+			has_technology = tech_hyper_drive_1
+			has_technology = tech_hyper_drive_2
+			has_technology = tech_hyper_drive_3
+			has_technology = tech_jump_drive_1
+			has_technology = tech_psi_jump_drive_1
 		}
 	}
 
@@ -751,7 +976,7 @@ transport = {
 	num_target_locators = 0
 	is_space_station = no
 	icon = ship_size_transport
-	
+
 	combat_disengage_chance = 1.5
 
 	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
@@ -773,7 +998,7 @@ military_station_small = {
 	max_speed = 6
 	rotation_speed = 10
 	acceleration = 10
-	max_hitpoints = 2000
+	max_hitpoints = @station_small_hp
 	modifier = {
 		ship_evasion_mult = -1
 		ships_upkeep_mult = -0.25
@@ -785,7 +1010,7 @@ military_station_small = {
 	combat_size_multiplier = 2
 	size_multiplier = 1
 	fleet_slot_size = 2
-	section_slots = { 
+	section_slots = {
 		"west" = { locator = "part1" }
 		"east" = { locator = "part2" }
 	}
@@ -795,16 +1020,18 @@ military_station_small = {
 	num_target_locators = 0
 	is_space_station = yes
 	base_buildtime = @corvette_build_time
-	
+
+	ship_roles = { gunship screen artillery carrier energy_torpedoes }
+
 	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
 	prerequisites = { "tech_space_defense_station_1" }
 	class = shipclass_military_station
 	construction_type = starbase_defenses
-	
+
 	required_component_set = "power_core"
 	required_component_set = "sensor_components"
 	required_component_set = "combat_computers"
-	
+
 	build_block_radius = @build_block_radius_military
 
 	potential_construction = {
@@ -833,29 +1060,32 @@ military_station_medium = {
 	ship_modifier = {
 		ship_weapon_range_mult = 0.30
 	}
-	max_hitpoints = 20000
+	max_hitpoints = @station_medium_hp
 	size_multiplier = 8
 	fleet_slot_size = 4
-	section_slots = { 
+	section_slots = {
 		"north" = { locator = "part1" }
 		"west" = { locator = "part2" }
 		"east" = { locator = "part3" }
 		"south" = { locator = "part4" }
 	}
 	num_target_locators = 0
-	is_space_station = yes	
+	is_space_station = yes
 	base_buildtime = @destroyer_build_time
+
+	ship_roles = { gunship screen artillery carrier energy_torpedoes }
+
 	is_listed = no
 	is_designable = no
 	uses_name_prefix = no
-	takes_name_from_ship_design = yes	
-	
+	takes_name_from_ship_design = yes
+
 	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
 	class = shipclass_military_station
 	required_component_set = "power_core"
 	required_component_set = "sensor_components"
 	required_component_set = "combat_computers"
-	
+
 	build_block_radius = @build_block_radius_military
 
 	resources = {
@@ -876,10 +1106,10 @@ military_station_large = {
 	ship_modifier = {
 		ship_weapon_range_mult = 0.30
 	}
-	max_hitpoints = 30000
+	max_hitpoints = @station_large_hp
 	size_multiplier = 16
 	fleet_slot_size = 8
-	section_slots = { 
+	section_slots = {
 		"north" = { locator = "part1" locator = "part2" }
 		"west" = { locator = "part3" locator = "part4" }
 		"east" = { locator = "part5" locator = "part6" }
@@ -888,17 +1118,20 @@ military_station_large = {
 	num_target_locators = 0
 	is_space_station = yes
 	base_buildtime = @cruiser_build_time
+
+	ship_roles = { gunship screen artillery carrier energy_torpedoes }
+
 	is_listed = no
 	is_designable = no
 	uses_name_prefix = no
-	takes_name_from_ship_design = yes	
-	
+	takes_name_from_ship_design = yes
+
 	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
 	class = shipclass_military_station
 	required_component_set = "power_core"
 	required_component_set = "sensor_components"
 	required_component_set = "combat_computers"
-	
+
 	build_block_radius = @build_block_radius_military
 
 	resources = {
@@ -914,7 +1147,7 @@ mining_station = {
 	max_speed = 0.0
 	acceleration = 0.0
 	rotation_speed = 0.0
-	max_hitpoints = 2000
+	max_hitpoints = @station_civilian_hp
 	modifier = {
 		ship_armor_add = 1000
 		ship_evasion_mult = -1
@@ -927,7 +1160,7 @@ mining_station = {
 	build_block_radius = @build_block_radius_civilian
 	is_civilian = no
 	components_add_to_cost = no
-	
+
 	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
 	prerequisites = { "tech_space_construction" }
 	class = shipclass_mining_station
@@ -951,7 +1184,7 @@ research_station = {
 	max_speed = 0.0
 	acceleration = 0.0
 	rotation_speed = 0.0
-	max_hitpoints = 2000
+	max_hitpoints = @station_civilian_hp
 	modifier = {
 		ship_armor_add = 1000
 		ship_evasion_mult = -1
@@ -964,7 +1197,7 @@ research_station = {
 	build_block_radius = @build_block_radius_civilian
 	is_civilian = no
 	components_add_to_cost = no
-	
+
 	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
 	prerequisites = { "tech_space_construction" }
 	class = shipclass_research_station
@@ -988,7 +1221,7 @@ observation_station = {
 	max_speed = 0.0
 	acceleration = 0.0
 	rotation_speed = 0.0
-	max_hitpoints = 2000
+	max_hitpoints = @station_civilian_hp
 	modifier = {
 		ship_armor_add = 1000
 		ship_evasion_mult = -1
@@ -999,12 +1232,14 @@ observation_station = {
 	is_space_station = yes
 	build_block_radius = @build_block_radius_civilian
 	is_civilian = yes
+	auto_upgrade = yes
 	components_add_to_cost = no
-	
+	is_designable = no
+
 	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
 	class = shipclass_observation_station
-	is_designable = no
 	valid_target_aggressive_stance = no
+	required_component_set = "science_cloaking_components"
 
 	resources = {
 		category = station_observers

@@ -31,7 +31,28 @@ offspring_corvette = {
 	use_shipnames_from = corvette
 
 	default_behavior = swarm
-
+	ship_roles = { screen gunship artillery brawler }
+	triggered_ship_roles = {
+		{
+			name = brawler_stealth
+			trigger = { has_technology = tech_cloaking_1 }
+		}
+		{
+			name = explosive
+			trigger = { has_technology = tech_torpedoes_1 }
+		}
+		{
+			name = explosive_stealth
+			trigger = {
+				has_technology = tech_cloaking_1
+				has_technology = tech_torpedoes_1 
+			}
+		}
+		{
+			name = energy_torpedoes
+			trigger = { has_technology = tech_energy_torpedoes_1 }
+		}
+	}
 	prerequisites = { "tech_corvettes" }
 	potential_country = { has_origin = origin_progenitor_hive }
 
@@ -103,7 +124,13 @@ offspring_destroyer = {
 	use_shipnames_from = destroyer
 
 	default_behavior = picket
-
+	ship_roles = { gunship artillery screen brawler }
+	triggered_ship_roles = {
+		{
+			name = artillery_stealth
+			trigger = { has_technology = tech_cloaking_2 }
+		}
+	}
 	prerequisites = { "tech_destroyers" }
 	potential_country = { has_origin = origin_progenitor_hive }
 
@@ -164,7 +191,30 @@ offspring_cruiser = {
 	use_shipnames_from = cruiser
 
 	default_behavior = line
-
+	ship_roles = { gunship carrier explosive artillery }
+	triggered_ship_roles = {
+		{
+			name = explosive_stealth
+			trigger = { has_technology = tech_cloaking_3 }
+		}
+		{
+			name = energy_torpedoes
+			trigger = { has_technology = tech_energy_torpedoes_1 }
+		}
+		{
+			name = energy_torpedoes_stealth
+			trigger = {
+				has_technology = tech_cloaking_3
+				has_technology = tech_energy_torpedoes_1
+			}
+		}
+		{
+			name = artillery_stealth
+			trigger = {
+				has_technology = tech_cloaking_3
+			}
+		}
+	}
 	prerequisites = { "tech_cruisers" }
 	potential_country = { has_origin = origin_progenitor_hive }
 
@@ -225,7 +275,8 @@ offspring_battleship = {
 	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
 	use_shipnames_from = battleship
 	
-	default_behavior = line
+	default_behavior = artillery
+	ship_roles = { artillery carrier gunship }
 
 	prerequisites = { "tech_battleships" }
 	potential_country = { has_origin = origin_progenitor_hive }
