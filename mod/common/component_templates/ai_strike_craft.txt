@@ -44,9 +44,9 @@ strike_craft_component_template = {
 	accuracy = 1.00
 	tracking = 0.80
 
-	health = 14
+	health = 21
 	armor = 0
-	shield = 15
+	shield = 7
 	evasion = 0.60
 
 	speed = @speed2
@@ -99,9 +99,9 @@ strike_craft_component_template = {
 	accuracy = 1.00
 	tracking = 0.90
 
-	health = 20
+	health = 30
 	armor = 0
-	shield = 20
+	shield = 10
 	evasion = 0.70
 
 	speed = @speed3
@@ -155,9 +155,9 @@ strike_craft_component_template = {
 	accuracy = 1.00
 	tracking = 1.00
 
-	health = 24
+	health = 36
 	armor = 0
-	shield = 25
+	shield = 12
 	evasion = 0.80
 
 	speed = @speed4
