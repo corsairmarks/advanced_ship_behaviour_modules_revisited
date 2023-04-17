@@ -15,7 +15,7 @@ This mod resolves compatibility conflicts from the original mod "Advanced Ship B
 
 Not included in my compilation mod [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2522974089]Subtle Polish: A Collection of Fixes and Enhancements[/url].  This mod is compatible with the compilation.
 
-Built for Stellaris version 3.4 "Cepheus."  Not compatible with achievements.
+Built for Stellaris version 3.7 "Canis Minor."  Not compatible with achievements.
 
 [h3]Required Mod Dependencies[/h3]
 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=790455347]Advanced Ship Behaviour Modules[/url] contains the original graphics and some necessary logic.  There is a high chance Stellaris will crash without this dependency installed.
@@ -26,10 +26,10 @@ This mod can be safely added after the game has started, but should not be remov
 [h3]Known Issues[/h3]
 Overriding a ship size causes the game to log errors. Expect to see four lines in the error.log file similar to these:
 [code]
-[14:50:31][game_singleobjectdatabase.h:148]: Object with key: offspring_corvette already exists, using the one at  file: common/ship_sizes/31_advanced_ship_behaviour_modules_revisited_overlord_ship_size_overrides.txt line: 5
-[14:50:31][game_singleobjectdatabase.h:148]: Object with key: offspring_destroyer already exists, using the one at  file: common/ship_sizes/31_advanced_ship_behaviour_modules_revisited_overlord_ship_size_overrides.txt line: 77
-[14:50:31][game_singleobjectdatabase.h:148]: Object with key: offspring_cruiser already exists, using the one at  file: common/ship_sizes/31_advanced_ship_behaviour_modules_revisited_overlord_ship_size_overrides.txt line: 138
-[14:50:31][game_singleobjectdatabase.h:148]: Object with key: offspring_battleship already exists, using the one at  file: common/ship_sizes/31_advanced_ship_behaviour_modules_revisited_overlord_ship_size_overrides.txt line: 200
+[04:59:28][game_singleobjectdatabase.h:165]: Object with key: offspring_corvette already exists, using the one at  file: common/ship_sizes/31_advanced_ship_behaviour_modules_revisited_overlord_ship_size_overrides.txt line: 5
+[04:59:28][game_singleobjectdatabase.h:165]: Object with key: offspring_destroyer already exists, using the one at  file: common/ship_sizes/31_advanced_ship_behaviour_modules_revisited_overlord_ship_size_overrides.txt line: 98
+[04:59:28][game_singleobjectdatabase.h:165]: Object with key: offspring_cruiser already exists, using the one at  file: common/ship_sizes/31_advanced_ship_behaviour_modules_revisited_overlord_ship_size_overrides.txt line: 165
+[04:59:28][game_singleobjectdatabase.h:165]: Object with key: offspring_battleship already exists, using the one at  file: common/ship_sizes/31_advanced_ship_behaviour_modules_revisited_overlord_ship_size_overrides.txt line: 250
 [/code]
 
 [h2]Change Log[/h2]
