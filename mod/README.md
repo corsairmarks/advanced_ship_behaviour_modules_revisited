@@ -18,7 +18,7 @@ This mod resolves compatibility conflicts from the original mod "Advanced Ship B
 
 Not included in my compilation mod [Subtle Polish: A Collection of Fixes and Enhancements](https://steamcommunity.com/sharedfiles/filedetails/?id=2522974089).  This mod is compatible with the compilation.
 
-Built for Stellaris version 3.7 "Canis Minor."  Not compatible with achievements.
+Built for Stellaris version 3.8 "Gemini."  Not compatible with achievements.
 
 ### Required Mod Dependencies
 
@@ -44,7 +44,7 @@ Overriding a ship size causes the game to log errors. Expect to see four lines i
 * 1.0.0 Initial version
 * 2.0.0 Update for compatibility with Stellaris version 3.2 "Herbert"
     * Integrate underlying game changes (ship_sizes)
-* 2.1.0 Mark as compatible for Stellaris 3.3 "Libra" - no script changes
+* 2.1.0 Mark as compatible with Stellaris 3.3 "Libra" - no script changes
 * 3.0.0 Update for Stellaris version 3.4.2 "Cepheus"
     * Add new `ai_ship_data` section to all appropriate ship designs
     * Update defense platform stats to match underlying changes
@@ -57,6 +57,7 @@ Overriding a ship size causes the game to log errors. Expect to see four lines i
     * Support cloaking
     * Remove compatibility global flag
     * Add compatibility trigger
+* 4.1.0 Mark as compatible with Stellaris 3.8 "Gemini" - no script changes
 
 ## Source Code
 
